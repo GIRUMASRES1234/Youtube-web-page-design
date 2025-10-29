@@ -1,0 +1,55 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+  font-family: 'Poppins',sans-serif;
+}
+headeer{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100px;
+  padding:20px 100px;
+  background: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 99;
+}
+.log{
+font-size: 2cm;
+color: white;
+user-select: none;
+}
+.navigation a{
+position: relative;
+font-size: 1.1cm;
+color:white;
+text-decoration: none;
+font-weight: 500;
+margin-left: 40px;
+}
+.navigation a::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  width: 100%;
+  height:  3px;
+  background: white;
+  border-radius: 5px;
+}
+.navigation .btnlogin-popup{
+  width: 130px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid white;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size:1.1cm ;
+  color:white ;
+  font-weight: 500;
+  margin-left: 40px;
+}
+.navigation .btnlogin-popup

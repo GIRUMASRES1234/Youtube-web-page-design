@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Is In The Air</title>
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffebee;
+            color: #d32f2f;
+            overflow-x: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(45deg, #ff7676, #f54ea2);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .love-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .love-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .heart {
+            position: absolute;
+            pointer-events: visibleStroke;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .btn {
+            background: #eb1920;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #b91111;
+            transform: scale(1.05);
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 30px;
+            background: #ffe0e0;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .love-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ff7676, #f54ea2);
+            width: 0%;
+            transition: width 1s;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+  HTML,CSS,Java Script
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #f54ea2;
+            color: white;
+            margin-top: 50px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .gallery img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>💚One Love, One Heart,One Life💖</h1>
+        <div class="subtitle">💚💛💖</div>
+    </div>
+
+    <div class="container">
+        <div class="love-card">
+            <h2>Have a good Life🤪🤪🤪</h2>
+
+        </div>
+
+        <div class="love-card">
+
+            <div class="love-meter">
+                <div class="love-progress" id="loveProgress"></div>
+            </div>
+            <button class="btn" id="measureLove"> </button>
+        </div>
+
+        <div class="love-card">
+            <h2>Love Gallery</h2>
+            <div class="gallery">
+                <img src="https://source.unsplash.com/random/300x300/?couple,love" alt="Love image 1">
+                <img src="https://source.unsplash.com/random/300x300/?romantic,love" alt="Love image 2">
+                <img src="https://source.unsplash.com/random/300x300/?heart,love" alt="Love image 3">
+                <img src="https://source.unsplash.com/random/300x300/?kiss,love" alt="Love image 4">
+            </div>
+        </div>
+
+        <div class="love-card">
+            <h2>Send a Love Message</h2>
+            <textarea id="loveMessage" rows="4" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid #ffcdd2;" placeholder="Write your love message here..."></textarea>
+            <button class="btn" id="sendLove">Send Love 💖</button>
+        </div>
+    </div>
+
+    <footer>
+        Made with 💖 | © 2023 Love family
+    </footer>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts
+            function createHearts() {
+                const heart = document.createElement('div');
+                heart.innerHTML = '';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = Math.random() * 100 + 'vh';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+
+            // Create hearts periodically
+            setInterval(createHearts, 300);
+
+            // Love meter functionality
+            const measureBtn = document.getElementById('measureLove');
+            const loveProgress = document.getElementById('loveProgress');
+
+            measureBtn.addEventListener('click', function() {
+                const randomLove = Math.floor(Math.random() * 100) + 1;
+                loveProgress.style.width = randomLove + '%';
+                loveProgress.textContent = randomLove + '%';
+
+                // Change color based on percentage
+                if(randomLove < 30) {
+                    loveProgress.style.background = '#ff7676';
+                } else if(randomLove < 70) {
+                    loveProgress.style.background = '#f54ea2';
+                } else {
+                    loveProgress.style.background = 'linear-gradient(90deg, #ff7676, #f54ea2)';
+                }
+            });
+
+            // Send love message functionality
+            const sendBtn = document.getElementById('sendLove');
+            const messageBox = document.getElementById('loveMessage');
+
+            sendBtn.addEventListener('click', function() {
+                if(messageBox.value.trim() === '') {
+                    alert('Please write a love message first!');
+                } else {
+                    alert('Your love message has been sent to the universe! ❤️\n"' + messageBox.value + '"');
+                    messageBox.value = '';
+
+                    // Create a heart explosion effect
+                    for(let i = 0; i < 20; i++) {
+                        setTimeout(() => {
+                            createHearts();
+                        }, i * 100);
+                    }
+                }
+            });
+
+            // Make gallery images clickable
+            const galleryImages = document.querySelectorAll('.gallery img');
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    const modal = document.createElement('div');
+                    modal.style.position = 'fixed';
+                    modal.style.top = '0';
+                    modal.style.left = '0';
+                    modal.style.width = '100%';
+                    modal.style.height = '100%';
+                    modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                    modal.style.display = 'flex';
+                    modal.style.justifyContent = 'center';
+                    modal.style.alignItems = 'center';
+                    modal.style.zIndex = '1000';
+
+                    const modalImg = document.createElement('img');
+                    modalImg.src = this.src;
+                    modalImg.style.maxWidth = '80%';
+                    modalImg.style.maxHeight = '80%';
+                    modalImg.style.borderRadius = '10px';
+
+                    modal.appendChild(modalImg);
+                    document.body.appendChild(modal);
+
+                    modal.addEventListener('click', function() {
+                        modal.remove();
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
